@@ -10,4 +10,4 @@ Then add `{% include 'collection-pagination' %}` to your collection templates in
 
 ARIA tags based on [A11y Style Guide's article](https://a11y-style-guide.com/style-guide/section-navigation.html#kssref-navigation-pagination)
 
-Removed the `rel="prev"` and `rel="next"` attributes after reading [this article](https://moz.com/community/q/implementation-of-rel-next-rel-prev)
+Removed the `rel="prev"` and `rel="next"` attributes after reading [this MOZ forum post](https://moz.com/community/q/implementation-of-rel-next-rel-prev) as Shopify already includes the prev/next link tags in the head.
