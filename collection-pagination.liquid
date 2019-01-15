@@ -1,7 +1,7 @@
 {%- if paginate.pages > 1 -%}
 <div class="pagination" role="navigation" aria-label="pagination">
   {%- if paginate.previous.is_link -%}
-    <span class="page"><a href="{{ paginate.previous.url }}" title="Previous page" rel="prev">{{ paginate.previous.title | replace: '&laquo; Previous', '&larr;' }}<span class="visually-hidden"> Previous page</span></a></span>
+    <span class="page"><a href="{{ paginate.previous.url }}" title="Previous page">{{ paginate.previous.title | replace: '&laquo; Previous', '&larr;' }}<span class="visually-hidden"> Previous page</span></a></span>
   {%- endif -%}
   {%- for part in paginate.parts -%}
     {%- if part.is_link -%}
@@ -16,7 +16,7 @@
     {%- endif -%}
   {%- endfor -%}
   {%- if paginate.next.is_link -%}
-    <span class="page"><a href="{{ paginate.next.url }}" title="Next page" rel="next">{{ paginate.next.title | replace: 'Next &raquo;', '&rarr;' }}<span class="visually-hidden"> Next page</span></a></span>
+    <span class="page"><a href="{{ paginate.next.url }}" title="Next page">{{ paginate.next.title | replace: 'Next &raquo;', '&rarr;' }}<span class="visually-hidden"> Next page</span></a></span>
   {%- endif -%}
 </div>
 {%- endif -%}
