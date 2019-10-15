@@ -1,11 +1,25 @@
 {%- if paginate.pages > 1 -%}
 <div class="pagination" role="navigation" aria-label="pagination">
   {%- if paginate.previous.is_link -%}
-    <span class="page"><a href="{{ paginate.previous.url }}" title="Previous page">{{ paginate.previous.title | replace: '&laquo; Previous', '&larr;' }}<span class="visually-hidden"> Previous page</span></a></span>
+    {%- capture previous_link_url -%}
+    {%- if template contains "search" -%}
+    {{ paginate.previous.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+    {%- else -%}
+    {{ paginate.previous.url | replace: '?page=1', '' }}
+    {%- endif -%}
+    {%- endcapture -%}
+    <span class="page"><a href="{{ previous_link_url }}" title="Previous page">{{ paginate.previous.title | replace: '&laquo; Previous', '&larr;' }}<span class="visually-hidden"> Previous page</span></a></span>
   {%- endif -%}
   {%- for part in paginate.parts -%}
     {%- if part.is_link -%}
-      <span class="page"><a href="{{ part.url}}">{{ part.title }}</a></span>
+      {%- capture part_link_url -%}
+      {%- if template contains "search" -%}
+      {{ part.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+      {%- else -%}
+      {{ part.url | replace: '?page=1', '' }}
+      {%- endif -%}
+      {%- endcapture -%}
+      <span class="page"><a href="{{ part_link_url }}">{{ part.title }}</a></span>
     {%- else -%}
       {%- assign is_deco = part.title | divided_by: 1 -%}
       {%- if is_deco != part.title -%}
