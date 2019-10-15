@@ -2,10 +2,14 @@
 <div class="pagination" role="navigation" aria-label="pagination">
   {%- if paginate.previous.is_link -%}
     {%- capture previous_link_url -%}
-    {%- if template contains "search" -%}
-    {{ paginate.previous.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+    {%- if paginate.current_page == 2 -%}
+      {%- if template contains "search" -%}
+      {{ paginate.previous.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+      {%- else -%}
+      {{ paginate.previous.url | replace: '?page=1', '' }}
+      {%- endif -%}
     {%- else -%}
-    {{ paginate.previous.url | replace: '?page=1', '' }}
+      {{ paginate.previous.url }}
     {%- endif -%}
     {%- endcapture -%}
     <span class="page"><a href="{{ previous_link_url }}" title="Previous page">{{ paginate.previous.title | replace: '&laquo; Previous', '&larr;' }}<span class="visually-hidden"> Previous page</span></a></span>
@@ -13,10 +17,14 @@
   {%- for part in paginate.parts -%}
     {%- if part.is_link -%}
       {%- capture part_link_url -%}
-      {%- if template contains "search" -%}
-      {{ part.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+      {%- if part.title == "1" -%}
+        {%- if template contains "search" -%}
+        {{ part.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
+        {%- else -%}
+        {{ part.url | replace: '?page=1', '' }}
+        {%- endif -%}
       {%- else -%}
-      {{ part.url | replace: '?page=1', '' }}
+      {{ part.url }}
       {%- endif -%}
       {%- endcapture -%}
       <span class="page"><a href="{{ part_link_url }}">{{ part.title }}</a></span>
