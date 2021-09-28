@@ -17,7 +17,7 @@
   {%- for part in paginate.parts -%}
     {%- if part.is_link -%}
       {%- capture part_link_url -%}
-      {%- if part.title == "1" -%}
+      {%- if part.title == 1 -%}
         {%- if template contains "search" -%}
         {{ part.url | replace: 'page=1', '' | replace: '?&', '?' | replace: '&&', '&' }}
         {%- else -%}
